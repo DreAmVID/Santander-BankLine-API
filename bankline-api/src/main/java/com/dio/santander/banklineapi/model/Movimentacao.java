@@ -18,9 +18,6 @@ public class Movimentacao {
 	
 	// Variaveis
 	
-	@Column (name = "id_conta")
-	private Integer IdConta;
-	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -34,6 +31,9 @@ public class Movimentacao {
 	
 	@Enumerated (EnumType.STRING)
 	private MovimentacaoTipo tipo;
+	
+	@Column (name = "id_conta")
+	private Integer IdConta;
 	
 	// Getters And Setteres
 	
