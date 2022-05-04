@@ -18,6 +18,9 @@ public class Movimentacao {
 	
 	// Variaveis
 	
+	@Column (name = "id_conta")
+	private Integer IdConta;
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -64,7 +67,11 @@ public class Movimentacao {
 	public void setTipo(MovimentacaoTipo tipo) {
 		this.tipo = tipo;
 	}
-	
-	
+	public Integer getIdConta() {
+		return IdConta;
+	}
+	public void setIdConta(Integer idConta) {
+		IdConta = idConta;
+	}	
 
 }
