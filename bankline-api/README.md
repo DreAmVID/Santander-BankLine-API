@@ -1,7 +1,12 @@
-# Read Me First
-The following was discovered as part of building this project:
+# BankLine API
 
-* The original package name 'com.dio.santander.bankline-api' is invalid and this project uses 'com.dio.santander.banklineapi' instead.
+Projeto que cria correntistas e atualiza saldo através de movimentações
+
+Tecnologias
+
+- Swagger 3
+- JPA Juntamente com PostgreSQL
+- Spring Web Dev Tools
 
 # Getting Started
 
