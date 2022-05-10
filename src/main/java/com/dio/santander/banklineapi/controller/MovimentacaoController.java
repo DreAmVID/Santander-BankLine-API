@@ -3,7 +3,10 @@ package com.dio.santander.banklineapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import com.dio.santander.banklineapi.model.Movimentacao;
 import com.dio.santander.banklineapi.repository.MovimentacaoRepository;
 import com.dio.santander.banklineapi.service.MovimentacaoService;
 
+@CrossOrigin (origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping ("/movimentacoes")
 public class MovimentacaoController {
@@ -29,13 +33,20 @@ public class MovimentacaoController {
 		return repository.findAll();
 	}
 	
+	@GetMapping("/{idConta}")
+	public List<Movimentacao> findAll(@PathVariable("idConta") Integer idConta){
+		return repository.findByIdConta(idConta);
+}
+	
 	@PostMapping
 	public void save (@RequestBody NovaMovimentacao movimentacao) {
 		service.save(movimentacao);
-		
-			
+				
 	}
 	
-	
+	@DeleteMapping("/{id}")
+	public void deleteMovimentacao(@PathVariable Integer id) {
+		repository.deleteById(id);
+	}	
 
 }

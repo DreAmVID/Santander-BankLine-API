@@ -11,15 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table (name = "tab_movimentacao")
+@Table(name= "tab_movimentacao")
 public class Movimentacao {
 	
-	// Variaveis
-	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column (name = "data_hora")
@@ -29,13 +28,12 @@ public class Movimentacao {
 	
 	private Double valor;
 	
-	@Enumerated (EnumType.STRING)
+	@Column(name = "id_conta")
+	private Integer idConta;
+	
+	@Enumerated(EnumType.STRING)
 	private MovimentacaoTipo tipo;
 	
-	@Column (name = "id_conta")
-	private Integer IdConta;
-	
-	// Getters And Setteres
 	
 	public Integer getId() {
 		return id;
@@ -43,6 +41,7 @@ public class Movimentacao {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	public LocalDateTime getDataHora() {
 		return dataHora;
 	}
@@ -68,10 +67,11 @@ public class Movimentacao {
 		this.tipo = tipo;
 	}
 	public Integer getIdConta() {
-		return IdConta;
+		return idConta;
 	}
 	public void setIdConta(Integer idConta) {
-		IdConta = idConta;
-	}	
+		this.idConta = idConta;
+	}
+	
 
 }
